@@ -24,7 +24,7 @@ const WEEK_TASKS = [
     items: [
       { text: 'Instantly warmup completing (~May 25 launch)', done: false },
       { text: 'Voice agent live on agentsetupexperts.com', done: true },
-      { text: '8 campaigns loaded with 187 leads total', done: true },
+      { text: '8 campaigns loaded with 211 leads total', done: true },
       { text: 'Meta/Google ads setup', done: false },
     ],
   },
@@ -119,7 +119,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-gray-400 mt-2">🌡️ All 8 campaigns warming up · Launch target ~May 25</p>
+          <p className="text-xs text-gray-400 mt-2">🌡️ All 8 campaigns warming up · 211 leads loaded · Launch target ~May 25</p>
         </section>
 
         {/* Week's Task List */}
