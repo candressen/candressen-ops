@@ -24,7 +24,7 @@ const WEEK_TASKS = [
     items: [
       { text: 'Instantly warmup completing (~May 25 launch)', done: false },
       { text: 'Voice agent live on agentsetupexperts.com', done: true },
-      { text: '8 campaigns loaded with 214 leads total', done: true },
+      { text: '8 campaigns loaded with 230 leads total', done: true },
       { text: 'Meta/Google ads setup', done: false },
     ],
   },
@@ -49,7 +49,7 @@ const WEEK_TASKS = [
     emoji: '🏠',
     items: [
       { text: 'Live data from Supabase ✓', done: true },
-      { text: 'Leads synced: 214 total (updated May 13)', done: true },
+      { text: 'Leads synced: 230 total (updated May 15)', done: true },
       { text: 'Daily Woz sync active', done: true },
     ],
   },
@@ -120,12 +120,12 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-gray-400 mt-2">🌡️ All 8 campaigns warming up · 214 leads loaded · Launch target ~May 25</p>
+          <p className="text-xs text-gray-400 mt-2">🌡️ All 8 campaigns warming up · 230 leads loaded · Launch target ~May 25</p>
         </section>
 
         {/* Week's Task List */}
         <section>
-          <h2 className="text-xl font-bold text-gray-900 mb-5">Week of May 13 — Status</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-5">Week of May 15 — Status</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {WEEK_TASKS.map(group => (
               <div key={group.project} className="bg-white rounded-2xl border border-gray-200 p-6">
