@@ -3,11 +3,13 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 const PROJECTS = [
-  { name: 'Agent Setup Experts', slug: 'ase', status: 'Active', emoji: '🤖', url: 'agentsetupexperts.com' },
-  { name: 'The Good Scene', slug: 'tgs', status: 'In Progress', emoji: '🎭', url: 'thegoodscene.com' },
-  { name: 'Somlr', slug: 'somlr', status: 'Beta', emoji: '🍷', url: 'somlr.ai' },
-  { name: 'PostPerk', slug: 'postperk', status: 'Planned', emoji: '📸', url: '' },
-  { name: 'SprintSensei', slug: 'sprintsensei', status: 'Planned', emoji: '⚡', url: '' },
+  { name: 'Agent Setup Experts', slug: 'ase', status: 'Active', emoji: '🤖', url: 'agentsetupexperts.com', next: 'Cold email launch ~May 25' },
+  { name: 'Somlr', slug: 'somlr', status: 'Beta', emoji: '🍷', url: 'somlr.ai', next: 'TestFlight pending Apple dev account' },
+  { name: 'The Good Scene', slug: 'tgs', status: 'In Progress', emoji: '🎭', url: 'thegoodscene.com', next: 'Waiting on Fabiana Airtable token + DNS' },
+  { name: 'PostPerk', slug: 'postperk', status: 'Planned', emoji: '📸', url: '', next: 'Define MVP scope' },
+  { name: 'SprintSensei', slug: 'sprintsensei', status: 'Planned', emoji: '⚡', url: '', next: 'Define MVP scope' },
+  { name: 'HotPotato', slug: 'hotpotato', status: 'Blocked', emoji: '🥔', url: '', next: 'Fix WebSocket reconnect bug' },
+  { name: 'SantosSmudge', slug: 'santossmudge', status: 'Maintenance', emoji: '🎨', url: '', next: 'Refresh preset library + approval checklist' },
 ]
 
 const STATUS_COLORS: Record<string, string> = {
@@ -15,6 +17,8 @@ const STATUS_COLORS: Record<string, string> = {
   'In Progress': 'bg-blue-100 text-blue-700',
   'Beta': 'bg-purple-100 text-purple-700',
   'Planned': 'bg-gray-100 text-gray-500',
+  'Blocked': 'bg-red-100 text-red-700',
+  'Maintenance': 'bg-yellow-100 text-yellow-700',
 }
 
 const WEEK_TASKS = [
@@ -95,7 +99,8 @@ export default function Home() {
                   <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${STATUS_COLORS[p.status]}`}>{p.status}</span>
                 </div>
                 <h3 className="font-bold text-gray-900 text-lg mb-1">{p.name}</h3>
-                {p.url && <p className="text-sm text-gray-400">{p.url}</p>}
+                {p.url && <p className="text-sm text-gray-400 mb-2">{p.url}</p>}
+                {p.next && <p className="text-xs text-gray-500 mt-2 border-t border-gray-100 pt-2">→ {p.next}</p>}
               </Link>
             ))}
           </div>
