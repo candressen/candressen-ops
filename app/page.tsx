@@ -8,7 +8,7 @@ const PROJECTS = [
   { name: 'The Good Scene', slug: 'tgs', status: 'Live', emoji: '🎭', url: 'thegoodscene.com', next: 'Fabiana Airtable token' },
   { name: 'PostPerk', slug: 'postperk', status: 'July 2026', emoji: '📸', url: '', next: 'Starts July' },
   { name: 'SprintSensei', slug: 'sprintsensei', status: 'Parked', emoji: '⚡', url: '', next: 'TBD' },
-  { name: 'HotPotato', slug: 'hotpotato', status: 'Blocked', emoji: '🥔', url: '', next: 'Fix WebSocket reconnect bug' },
+  { name: 'RBLS Apps', slug: 'rblsapps', status: 'Launching', emoji: '🚀', url: 'rblsapps.com', next: 'LLC approval → Apple Dev Program → TestFlight' },
   { name: 'SantosSmudge', slug: 'santossmudge', status: 'Maintenance', emoji: '🎨', url: '', next: 'Refresh preset library' },
 ]
 
