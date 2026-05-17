@@ -93,29 +93,19 @@ export const AGENTS: {
   name: string;
   role: string;
   model: string;
+  provider: string;
   status: 'online' | 'idle' | 'busy';
   emoji: string;
   currentTask: string;
+  schedule: string;
   team: 'dev' | 'marketing';
 }[] = [
-  { id: 'bob', name: 'Bob', role: 'Orchestrator / Chief of Staff', model: 'claude-sonnet-4-6', status: 'online', emoji: '🧭', currentTask: 'Coordinating ASE website sprint', team: 'dev' },
-  { id: 'jordan', name: 'Jordan', role: 'CTO / Lead Planner', model: 'gpt-5.4', status: 'idle', emoji: '🎨', currentTask: 'ASE site architecture ready', team: 'dev' },
-  { id: 'woz', name: 'Woz', role: 'Coding Worker', model: 'gpt-5.4-mini', status: 'idle', emoji: '🛠️', currentTask: 'Waiting for copy to complete', team: 'dev' },
-  { id: 'marcopolo', name: 'MarcoPolo', role: 'Code Locator', model: 'o4-mini', status: 'idle', emoji: '🗺️', currentTask: 'Standing by', team: 'dev' },
-  { id: 'patel', name: 'Patel', role: 'QA Agent', model: 'claude-haiku-3-5', status: 'idle', emoji: '📈', currentTask: 'Standing by', team: 'dev' },
-  { id: 'vlad', name: 'Vlad', role: 'Security Agent', model: 'claude-sonnet-4-6', status: 'idle', emoji: '⚙️', currentTask: 'Standing by', team: 'dev' },
-  { id: 'duy', name: 'Duy', role: 'Schema Guardian', model: 'o4-mini', status: 'idle', emoji: '🧪', currentTask: 'Standing by', team: 'dev' },
-  { id: 'pablo', name: 'Pablo', role: 'Docs & Spec Writer', model: 'claude-haiku-3-5', status: 'idle', emoji: '📱', currentTask: 'Standing by', team: 'dev' },
-  { id: 'alberto', name: 'Alberto', role: 'Environment Doctor', model: 'o4-mini', status: 'online', emoji: '🚀', currentTask: 'Standing by', team: 'dev' },
-  { id: 'nova', name: 'Nova', role: 'CMO / Strategy', model: 'claude-sonnet-4-6', status: 'online', emoji: '⭐', currentTask: 'ASE ICP & messaging brief complete', team: 'marketing' },
-  { id: 'iris', name: 'Iris', role: 'COO / Ops', model: 'claude-sonnet-4-6', status: 'idle', emoji: '🌀', currentTask: 'Delivery playbook pending', team: 'marketing' },
-  { id: 'seong', name: 'Seong', role: 'SEO Agent', model: 'gemini-2.5-flash', status: 'online', emoji: '🔍', currentTask: 'ASE keyword map complete', team: 'marketing' },
-  { id: 'dan', name: 'Dan', role: 'Content Writer', model: 'gpt-5.4', status: 'busy', emoji: '✍️', currentTask: 'Writing ASE homepage copy', team: 'marketing' },
-  { id: 'hulk', name: 'Hulk', role: 'Growth / Distribution', model: 'gpt-5.4-mini', status: 'idle', emoji: '💪', currentTask: 'Awaiting site launch', team: 'marketing' },
-  { id: 'marki', name: 'Marki', role: 'Paid Marketing', model: 'gpt-5.4', status: 'idle', emoji: '📣', currentTask: 'On hold — activate post first 2 clients', team: 'marketing' },
-  { id: 'felix', name: 'Felix', role: 'CRM / Email', model: 'gpt-5.4-mini', status: 'idle', emoji: '📧', currentTask: 'Awaiting site launch', team: 'marketing' },
-  { id: 'nora', name: 'Nora', role: 'Analytics', model: 'gemini-2.5-flash', status: 'idle', emoji: '📊', currentTask: 'GA4 setup pending site build', team: 'marketing' },
-  { id: 'zara', name: 'Zara', role: 'Ops / Automation', model: 'o4-mini', status: 'idle', emoji: '⚡', currentTask: 'DNS & deploy — scheduled Apr 18', team: 'marketing' },
+  { id: 'bob', name: 'Bob', role: 'Orchestrator / CTO-COO Partner', model: 'claude-sonnet-4-6', provider: 'Anthropic', status: 'online', emoji: '🔧', currentTask: 'Always on — orchestrating all projects', schedule: 'Always on', team: 'dev' },
+  { id: 'woz', name: 'Woz', role: 'Coding Agent & Dashboard Updater', model: 'gpt-5.4', provider: 'OpenAI', status: 'idle', emoji: '🛠️', currentTask: 'On-demand ACP + daily dashboard sync', schedule: 'Daily 8am weekdays + on-demand', team: 'dev' },
+  { id: 'dan', name: 'Dan', role: 'Content Writer (blog + social + images)', model: 'gpt-5.4', provider: 'OpenAI', status: 'busy', emoji: '✍️', currentTask: 'Writing ASE blog posts + social copy daily', schedule: 'Daily 9am', team: 'marketing' },
+  { id: 'nora', name: 'Nora', role: 'Analytics & Reporting', model: 'o4-mini', provider: 'OpenAI', status: 'online', emoji: '📊', currentTask: 'Daily campaign stats → #ase-reports', schedule: 'Daily 9am weekdays', team: 'marketing' },
+  { id: 'hulk', name: 'Hulk', role: 'Lead Scraping & Email Enrichment', model: 'o4-mini', provider: 'OpenAI', status: 'online', emoji: '💪', currentTask: 'Scraping leads daily across 8 industries', schedule: 'Daily 7am weekdays', team: 'marketing' },
+  { id: 'vero', name: 'Vero', role: 'Social Media Scheduler', model: 'o4-mini', provider: 'OpenAI', status: 'idle', emoji: '📱', currentTask: 'Scheduling approved posts to LinkedIn/FB/IG', schedule: 'Hourly + Mon/Wed/Fri 10am', team: 'marketing' },
 ];
 
 export const TASKS: {
