@@ -3,22 +3,24 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 const PROJECTS = [
-  { name: 'Agent Setup Experts', slug: 'ase', status: 'Active', emoji: '🤖', url: 'agentsetupexperts.com', next: 'Cold email launch ~May 25' },
-  { name: 'Somlr', slug: 'somlr', status: 'Beta', emoji: '🍷', url: 'somlr.ai', next: 'TestFlight pending Apple dev account' },
-  { name: 'The Good Scene', slug: 'tgs', status: 'In Progress', emoji: '🎭', url: 'thegoodscene.com', next: 'Waiting on Fabiana Airtable token + DNS' },
-  { name: 'PostPerk', slug: 'postperk', status: 'Planned', emoji: '📸', url: '', next: 'Define MVP scope' },
-  { name: 'SprintSensei', slug: 'sprintsensei', status: 'Planned', emoji: '⚡', url: '', next: 'Define MVP scope' },
+  { name: 'Agent Setup Experts', slug: 'ase', status: 'Launching', emoji: '🤖', url: 'agentsetupexperts.com', next: 'Google Ads approval + fix Buffer (FB/IG)' },
+  { name: 'Somlr', slug: 'somlr', status: 'Dev Complete', emoji: '🍷', url: 'somlr.ai', next: 'Awaiting RBLS LLC approval → TestFlight' },
+  { name: 'The Good Scene', slug: 'tgs', status: 'Live', emoji: '🎭', url: 'thegoodscene.com', next: 'Fabiana Airtable token' },
+  { name: 'PostPerk', slug: 'postperk', status: 'July 2026', emoji: '📸', url: '', next: 'Starts July' },
+  { name: 'SprintSensei', slug: 'sprintsensei', status: 'Parked', emoji: '⚡', url: '', next: 'TBD' },
   { name: 'HotPotato', slug: 'hotpotato', status: 'Blocked', emoji: '🥔', url: '', next: 'Fix WebSocket reconnect bug' },
-  { name: 'SantosSmudge', slug: 'santossmudge', status: 'Maintenance', emoji: '🎨', url: '', next: 'Refresh preset library + approval checklist' },
+  { name: 'SantosSmudge', slug: 'santossmudge', status: 'Maintenance', emoji: '🎨', url: '', next: 'Refresh preset library' },
 ]
 
 const STATUS_COLORS: Record<string, string> = {
-  'Active': 'bg-green-100 text-green-700',
+  'Live': 'bg-green-100 text-green-700',
+  'Dev Complete': 'bg-green-100 text-green-700',
+  'Launching': 'bg-blue-100 text-blue-700',
   'In Progress': 'bg-blue-100 text-blue-700',
-  'Beta': 'bg-purple-100 text-purple-700',
-  'Planned': 'bg-gray-100 text-gray-500',
-  'Blocked': 'bg-red-100 text-red-700',
   'Maintenance': 'bg-yellow-100 text-yellow-700',
+  'Blocked': 'bg-red-100 text-red-700',
+  'Parked': 'bg-gray-100 text-gray-400',
+  'July 2026': 'bg-gray-100 text-gray-500',
 }
 
 const WEEK_TASKS = [
