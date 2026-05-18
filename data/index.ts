@@ -101,11 +101,24 @@ export const AGENTS: {
   team: 'dev' | 'marketing';
 }[] = [
   { id: 'bob', name: 'Bob', role: 'Orchestrator / CTO-COO Partner', model: 'claude-sonnet-4-6', provider: 'Anthropic', status: 'online', emoji: '🔧', currentTask: 'Always on — orchestrating all projects', schedule: 'Always on', team: 'dev' },
-  { id: 'woz', name: 'Woz', role: 'Coding Agent & Dashboard Updater', model: 'gpt-5.4', provider: 'OpenAI', status: 'idle', emoji: '🛠️', currentTask: 'On-demand ACP + daily dashboard sync', schedule: 'Daily 8am weekdays + on-demand', team: 'dev' },
+  { id: 'woz', name: 'Woz', role: 'Coding Agent & Dashboard Updater', model: 'gpt-5.4', provider: 'OpenAI', status: 'idle', emoji: '🛠️', currentTask: 'On-demand ACP + daily dashboard sync', schedule: 'Daily 8am + on-demand', team: 'dev' },
+  { id: 'jordan', name: 'Jordan', role: 'CTO / Lead Planner', model: 'gpt-5.4', provider: 'OpenAI', status: 'idle', emoji: '🎨', currentTask: 'Standing by', schedule: 'On-demand', team: 'dev' },
+  { id: 'marcopolo', name: 'MarcoPolo', role: 'Code Locator', model: 'o4-mini', provider: 'OpenAI', status: 'idle', emoji: '🗺️', currentTask: 'Standing by', schedule: 'On-demand', team: 'dev' },
+  { id: 'patel', name: 'Patel', role: 'QA Agent', model: 'claude-haiku-3-5', provider: 'Anthropic', status: 'idle', emoji: '📈', currentTask: 'Standing by', schedule: 'On-demand', team: 'dev' },
+  { id: 'vlad', name: 'Vlad', role: 'Security Agent', model: 'claude-sonnet-4-6', provider: 'Anthropic', status: 'idle', emoji: '⚙️', currentTask: 'Standing by', schedule: 'On-demand', team: 'dev' },
+  { id: 'duy', name: 'Duy', role: 'Schema Guardian', model: 'o4-mini', provider: 'OpenAI', status: 'idle', emoji: '🧪', currentTask: 'Standing by', schedule: 'On-demand', team: 'dev' },
+  { id: 'pablo', name: 'Pablo', role: 'Docs & Spec Writer', model: 'claude-haiku-3-5', provider: 'Anthropic', status: 'idle', emoji: '📱', currentTask: 'Standing by', schedule: 'On-demand', team: 'dev' },
+  { id: 'alberto', name: 'Alberto', role: 'Environment Doctor', model: 'o4-mini', provider: 'OpenAI', status: 'idle', emoji: '🚀', currentTask: 'Standing by', schedule: 'On-demand', team: 'dev' },
   { id: 'dan', name: 'Dan', role: 'Content Writer (blog + social + images)', model: 'gpt-5.4', provider: 'OpenAI', status: 'busy', emoji: '✍️', currentTask: 'Writing ASE blog posts + social copy daily', schedule: 'Daily 9am', team: 'marketing' },
-  { id: 'nora', name: 'Nora', role: 'Analytics & Reporting', model: 'o4-mini', provider: 'OpenAI', status: 'online', emoji: '📊', currentTask: 'Daily campaign stats → #ase-reports', schedule: 'Daily 9am weekdays', team: 'marketing' },
-  { id: 'hulk', name: 'Hulk', role: 'Lead Scraping & Email Enrichment', model: 'o4-mini', provider: 'OpenAI', status: 'online', emoji: '💪', currentTask: 'Scraping leads daily across 8 industries', schedule: 'Daily 7am weekdays', team: 'marketing' },
-  { id: 'vero', name: 'Vero', role: 'Social Media Scheduler', model: 'o4-mini', provider: 'OpenAI', status: 'idle', emoji: '📱', currentTask: 'Scheduling approved posts to LinkedIn/FB/IG', schedule: 'Hourly + Mon/Wed/Fri 10am', team: 'marketing' },
+  { id: 'nora', name: 'Nora', role: 'Analytics & Reporting', model: 'o4-mini', provider: 'OpenAI', status: 'online', emoji: '📊', currentTask: 'Daily campaign stats', schedule: 'Daily 9am weekdays', team: 'marketing' },
+  { id: 'hulk', name: 'Hulk', role: 'Lead Scraping & Email Enrichment', model: 'o4-mini', provider: 'OpenAI', status: 'online', emoji: '💪', currentTask: 'Scraping leads across 8 industries', schedule: 'Daily 7am weekdays', team: 'marketing' },
+  { id: 'vero', name: 'Vero', role: 'Social Media Scheduler', model: 'o4-mini', provider: 'OpenAI', status: 'idle', emoji: '📱', currentTask: 'Scheduling approved posts to LinkedIn/FB/IG', schedule: 'Daily 2:30pm', team: 'marketing' },
+  { id: 'nova', name: 'Nova', role: 'CMO / Strategy', model: 'gpt-5.4', provider: 'OpenAI', status: 'idle', emoji: '⭐', currentTask: 'Google Ads strategy complete — awaiting API approval', schedule: 'On-demand', team: 'marketing' },
+  { id: 'iris', name: 'Iris', role: 'COO / Ops', model: 'gpt-5.4', provider: 'OpenAI', status: 'idle', emoji: '🌀', currentTask: 'Standing by', schedule: 'On-demand', team: 'marketing' },
+  { id: 'seong', name: 'Seong', role: 'SEO Agent', model: 'gemini-2.5-flash', provider: 'Gemini', status: 'idle', emoji: '🔍', currentTask: 'Standing by', schedule: 'On-demand', team: 'marketing' },
+  { id: 'felix', name: 'Felix', role: 'CRM / Email', model: 'gpt-5.4', provider: 'OpenAI', status: 'idle', emoji: '📧', currentTask: 'Standing by', schedule: 'On-demand', team: 'marketing' },
+  { id: 'marki', name: 'Marki', role: 'Paid Marketing', model: 'gpt-5.4', provider: 'OpenAI', status: 'idle', emoji: '📣', currentTask: 'On hold — activate post first 2 clients', schedule: 'On-demand', team: 'marketing' },
+  { id: 'zara', name: 'Zara', role: 'Ops / Automation', model: 'o4-mini', provider: 'OpenAI', status: 'idle', emoji: '⚡', currentTask: 'Standing by', schedule: 'On-demand', team: 'marketing' },
 ];
 
 export const TASKS: {

@@ -11,6 +11,7 @@ const PROJECTS = [
   { name: 'SprintSensei', slug: 'sprintsensei', status: 'Parked', emoji: '⚡', url: '', next: 'TBD' },
   { name: 'RBLS Apps', slug: 'rblsapps', status: 'Launching', emoji: '🚀', url: 'rblsapps.com', next: 'LLC approval → Apple Dev Program → TestFlight' },
   { name: 'SantosSmudge', slug: 'santossmudge', status: 'Maintenance', emoji: '🎨', url: '', next: 'Refresh preset library' },
+  { name: 'EmailMafia', slug: 'emailmafia', status: 'Ideation', emoji: '✉️', url: '', next: 'Ideation & sketching phase — June 2026' },
 ]
 
 const STATUS_COLORS: Record<string, string> = {
@@ -19,6 +20,7 @@ const STATUS_COLORS: Record<string, string> = {
   'Launching': 'bg-blue-100 text-blue-700',
   'In Progress': 'bg-blue-100 text-blue-700',
   'Maintenance': 'bg-yellow-100 text-yellow-700',
+  'Ideation': 'bg-purple-100 text-purple-700',
   'Blocked': 'bg-red-100 text-red-700',
   'Parked': 'bg-gray-100 text-gray-400',
   'July 2026': 'bg-gray-100 text-gray-500',
@@ -96,7 +98,7 @@ export default function Home() {
           <p className="text-gray-500 mb-6">All active products and initiatives</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {PROJECTS.map(p => (
-              <Link key={p.slug} href={`/${p.slug}`} className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
+              <Link key={p.slug} href={`/projects/${p.slug}`} className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between mb-4">
                   <span className="text-3xl">{p.emoji}</span>
                   <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${STATUS_COLORS[p.status]}`}>{p.status}</span>
