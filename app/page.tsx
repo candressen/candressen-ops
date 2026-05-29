@@ -64,15 +64,68 @@ const WEEK_TASKS = [
   },
 ]
 
+const COUNCIL_MEMBERS = [
+  { name: 'Socrates', role: 'Contrarian', model: 'o4-mini' },
+  { name: 'Descartes', role: 'First Principles', model: 'o4-mini' },
+  { name: 'Leibniz', role: 'Expansionist', model: 'o4-mini' },
+  { name: 'Seneca', role: 'Outsider', model: 'o4-mini' },
+  { name: 'Machiavelli', role: 'Executor', model: 'o4-mini' },
+]
+
+type CouncilSummary = {
+  key: string
+  name: string
+  role: string
+  summary: string
+}
+
+type CouncilSession = {
+  id: string
+  ideaTitle: string
+  project: string
+  createdAt: string | null
+  verdict: string
+  chairmanSynthesis: string
+  memberSummaries: CouncilSummary[]
+}
+
+const clampTwoLines = {
+  display: '-webkit-box',
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: 'vertical' as const,
+  overflow: 'hidden',
+}
+
+function formatDate(value: string | null) {
+  if (!value) return 'Date unavailable'
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return 'Date unavailable'
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date)
+}
+
 export default function Home() {
   const [stats, setStats] = useState({ totalLeads: 0, emailsSent: 0, replied: 0, booked: 0 })
   const [loading, setLoading] = useState(true)
+  const [councilSessions, setCouncilSessions] = useState<CouncilSession[]>([])
+  const [councilLoading, setCouncilLoading] = useState(true)
 
   useEffect(() => {
     fetch('/api/ase/stats')
       .then(r => r.json())
       .then(d => { setStats(d); setLoading(false) })
       .catch(() => setLoading(false))
+
+    fetch('/api/council/sessions')
+      .then(r => r.json())
+      .then(d => {
+        setCouncilSessions(Array.isArray(d.sessions) ? d.sessions : [])
+        setCouncilLoading(false)
+      })
+      .catch(() => setCouncilLoading(false))
   }, [])
 
   return (
@@ -91,8 +144,6 @@ export default function Home() {
       </header>
 
       <main className="max-w-[1200px] mx-auto px-8 py-10 space-y-12">
-
-        {/* Projects */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Projects</h2>
           <p className="text-gray-500 mb-6">All active products and initiatives</p>
@@ -111,7 +162,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ASE Live Stats */}
         <section>
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-xl font-bold text-gray-900">ASE Cold Email — Live Stats</h2>
@@ -133,7 +183,69 @@ export default function Home() {
           <p className="text-xs text-gray-400 mt-2">🌡️ All 8 campaigns warming up · 237 leads loaded · Launch target ~May 25</p>
         </section>
 
-        {/* Week's Task List */}
+        <section>
+          <div className="flex items-end justify-between gap-4 mb-5">
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">R&D Council</h2>
+              <p className="text-gray-500 mt-1">Recent decisions feed from the council_sessions table</p>
+            </div>
+            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-gray-900 text-white">Recent decisions</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-3 mb-6">
+            {COUNCIL_MEMBERS.map(member => (
+              <div key={member.name} className="bg-white rounded-2xl border border-gray-200 p-4">
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <p className="font-bold text-gray-900">{member.name}</p>
+                  <span className="text-[11px] font-semibold px-2 py-1 rounded-full bg-blue-50 text-blue-700">{member.model}</span>
+                </div>
+                <span className="inline-flex text-xs font-medium px-2.5 py-1 rounded-full bg-gray-100 text-gray-600">{member.role}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="space-y-5">
+            {councilLoading ? (
+              <div className="bg-white rounded-2xl border border-gray-200 p-8 text-sm text-gray-500">Loading council sessions…</div>
+            ) : councilSessions.length === 0 ? (
+              <div className="bg-white rounded-2xl border border-dashed border-gray-300 p-8 text-sm text-gray-500">No council sessions returned yet.</div>
+            ) : (
+              councilSessions.map(session => (
+                <article key={session.id} className="bg-white rounded-3xl border border-gray-200 p-6 shadow-sm">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-5">
+                    <div>
+                      <div className="flex items-center gap-2 mb-3 flex-wrap">
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-400">Idea reviewed</span>
+                        <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-gray-100 text-gray-600">{session.project}</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{session.ideaTitle}</h3>
+                      <p className="text-sm text-gray-600 max-w-3xl">{session.verdict}</p>
+                    </div>
+                    <div className="text-sm text-gray-500 whitespace-nowrap">{formatDate(session.createdAt)}</div>
+                  </div>
+
+                  <div className="rounded-2xl bg-gray-50 border border-gray-200 p-4 mb-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-2">Chairman synthesis</p>
+                    <p className="text-sm text-gray-700" style={clampTwoLines}>{session.chairmanSynthesis}</p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {session.memberSummaries.map(member => (
+                      <div key={`${session.id}-${member.key}`} className="rounded-2xl border border-gray-200 p-4 bg-white">
+                        <div className="flex items-center justify-between gap-3 mb-2">
+                          <p className="font-semibold text-gray-900">{member.name}</p>
+                          <span className="text-[11px] font-medium px-2 py-1 rounded-full bg-gray-100 text-gray-500">{member.role}</span>
+                        </div>
+                        <p className="text-sm text-gray-600" style={clampTwoLines}>{member.summary}</p>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              ))
+            )}
+          </div>
+        </section>
+
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-5">Week of May 18 — Status</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -160,8 +272,6 @@ export default function Home() {
           </div>
         </section>
 
-
-        {/* Agent Team */}
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-2">Agent Team</h2>
           <p className="text-gray-500 mb-6">Active agents and their models</p>
@@ -184,7 +294,6 @@ export default function Home() {
             ))}
           </div>
         </section>
-
       </main>
     </div>
   )
