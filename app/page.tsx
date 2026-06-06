@@ -1,6 +1,5 @@
 'use client'
 import Link from 'next/link'
-import { AGENTS } from '@/data/index'
 import { useEffect, useState } from 'react'
 
 const PROJECTS = [
@@ -61,6 +60,41 @@ const WEEK_TASKS = [
     ],
   },
 ]
+
+const AGENTS = [
+  { id: 'bob', name: 'Bob', role: 'Orchestrator', model: 'claude-sonnet-4-6', status: 'online', emoji: '🔧', schedule: 'Always on' },
+  { id: 'woz', name: 'Woz', role: 'Coding', model: 'gpt-5.4', status: 'idle', emoji: '🛠️', schedule: 'Daily 8am + on-demand' },
+  { id: 'dan', name: 'Dan', role: 'Content', model: 'gpt-5.4', status: 'busy', emoji: '✍️', schedule: 'Daily 9am' },
+  { id: 'felix', name: 'Felix', role: 'Email Writing', model: 'gpt-4o', status: 'idle', emoji: '📧', schedule: 'On-demand' },
+  { id: 'hulk', name: 'Hulk', role: 'Lead Scraping', model: 'o4-mini', status: 'online', emoji: '💪', schedule: 'Daily 7am weekdays' },
+  { id: 'nora', name: 'Nora', role: 'Analytics', model: 'o4-mini', status: 'online', emoji: '📊', schedule: 'Daily 9am weekdays' },
+  { id: 'vero', name: 'Vero', role: 'Social Scheduling', model: 'o4-mini', status: 'idle', emoji: '📱', schedule: 'Daily 2:30pm' },
+  { id: 'cristina', name: 'Cristina', role: 'Voice Agent', model: 'gpt-realtime-2', status: 'online', emoji: '🎙️', schedule: 'Always on' },
+  { id: 'marcopolo', name: 'MarcoPolo', role: 'Code Locator', model: 'gpt-4o', status: 'idle', emoji: '🗺️', schedule: 'On-demand' },
+  { id: 'pablo', name: 'Pablo', role: 'Docs & Spec Writer', model: 'gpt-4o', status: 'idle', emoji: '📝', schedule: 'On-demand' },
+  { id: 'duy', name: 'Duy', role: 'Schema Guardian', model: 'gpt-4o', status: 'idle', emoji: '🧪', schedule: 'On-demand' },
+] as const
+
+const RD_COUNCIL = [
+  { name: 'Socrates', role: 'Contrarian', model: 'o4-mini' },
+  { name: 'Descartes', role: 'First Principles', model: 'o4-mini' },
+  { name: 'Leibniz', role: 'Expansionist', model: 'o4-mini' },
+  { name: 'Seneca', role: 'Outsider', model: 'o4-mini' },
+  { name: 'Machiavelli', role: 'Executor', model: 'o4-mini' },
+  { name: 'Bob', role: 'Chairman', model: 'claude-sonnet-4-6' },
+] as const
+
+const POL_TEAM = [
+  { name: 'Pol', role: 'Orchestrator' },
+  { name: 'Jeff', role: 'Coding' },
+  { name: 'Scrappy', role: 'Lead Scraping' },
+  { name: 'Indranil', role: 'Email Writer' },
+  { name: 'Sunil', role: 'Email Sender' },
+  { name: 'Mahima', role: 'Analytics' },
+  { name: 'Ranjita', role: 'Enrichment' },
+  { name: 'Estella', role: 'Ad Creative' },
+  { name: 'Cal', role: 'Scheduling' },
+] as const
 
 export default function Home() {
   const [stats, setStats] = useState({ totalLeads: 0, emailsSent: 0, replied: 0, booked: 0 })
@@ -180,6 +214,27 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
+            <div className="bg-white rounded-2xl border border-gray-200 p-6">
+              <h3 className="font-bold text-gray-900 mb-4">R&D Council</h3>
+              <ul className="space-y-2">
+                {RD_COUNCIL.map(member => (
+                  <li key={member.name} className="flex items-center justify-between text-sm">
+                    <span className="text-gray-700">{member.name} — {member.role}</span>
+                    <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-mono">{member.model}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white rounded-2xl border border-gray-200 p-6">
+              <h3 className="font-bold text-gray-900 mb-4">Pol&apos;s Team</h3>
+              <ul className="space-y-2">
+                {POL_TEAM.map(member => (
+                  <li key={member.name} className="text-sm text-gray-700">{member.name} — {member.role}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
