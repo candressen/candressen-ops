@@ -31,7 +31,7 @@ const statusSections = [
 const quickNavCards = [
   {
     title: 'Influencer Outreach',
-    description: '99 wine influencers researched, 24 confirmed emails',
+    description: '59 influencers researched, 55 confirmed emails',
     href: '/somlr/influencers',
     active: true,
   },
@@ -170,10 +170,10 @@ export default function SomlrPage() {
               <h2 className="text-xl font-bold text-gray-900">🎯 Influencer Outreach</h2>
               <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">
                 {[
-                  { label: 'Researched', value: '99' },
-                  { label: 'Confirmed emails', value: '24' },
-                  { label: 'Inferred', value: '32' },
-                  { label: 'Personal / not public', value: '33' },
+                  { label: 'Researched', value: '59' },
+                  { label: 'Confirmed emails', value: '55' },
+                  { label: 'Inferred', value: '1' },
+                  { label: 'Personal / not public', value: '2' },
                 ].map((stat) => (
                   <div key={stat.label} className="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3">
                     <p className="text-xs uppercase tracking-[0.12em] text-gray-400">{stat.label}</p>
