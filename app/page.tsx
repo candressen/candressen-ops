@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 const PROJECTS = [
   { name: 'Agent Setup Experts', slug: 'ase', status: 'Launching', emoji: '🤖', url: 'agentsetupexperts.com', next: 'Google Ads approval + fix Buffer (FB/IG)' },
-  { name: 'Somlr', slug: 'somlr', status: 'Dev Complete', emoji: '🍷', url: 'somlr.ai', next: 'Awaiting RBLS LLC approval → TestFlight' },
+  { name: 'Somlr', slug: 'somlr', status: 'Dev Complete', emoji: '🍷', url: 'somlr.ai', next: 'Awaiting RBLS LLC approval → TestFlight', href: '/somlr' },
   { name: 'The Good Scene', slug: 'tgs', status: 'Live', emoji: '🎭', url: 'thegoodscene.com', next: 'Fabiana Airtable token' },
   { name: 'PostPerk', slug: 'postperk', status: 'July 2026', emoji: '📸', url: '', next: 'Starts July' },
   { name: 'SprintSensei', slug: 'sprintsensei', status: 'Parked', emoji: '⚡', url: '', next: 'TBD' },
@@ -130,7 +130,7 @@ export default function Home() {
           <p className="text-gray-500 mb-6">All active products and initiatives</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {PROJECTS.map(p => (
-              <Link key={p.slug} href={`/${p.slug}`} className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
+              <Link key={p.slug} href={p.href || `/${p.slug}`} className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between mb-4">
                   <span className="text-3xl">{p.emoji}</span>
                   <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${STATUS_COLORS[p.status]}`}>{p.status}</span>
